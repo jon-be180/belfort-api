@@ -1,0 +1,11 @@
+<html>
+  <body>
+    SQL:
+    <form method="POST">
+      <textarea name="sql" style="width:100%;height:20%">{{ sql }}</textarea>
+      <input type="submit">
+      <p>Error: {{ error|json }} {{ error.message }}</p>
+      <p> Results: {{ results|json }}</p>
+   </form>
+  </body>
+</html>
