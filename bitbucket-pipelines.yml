@@ -3,9 +3,9 @@ pipelines:
     - step:
         name: Build Belfort API
         script:
-        - zip -r docker-multicontainer-v2.zip cron.yaml Dockerrun.aws.json .ebextensions php-app proxy
+        - zip -r docker-belfort-api.zip server.js
         artifacts:
-        - docker-multicontainer-v2.zip
+        - docker-belfort-api.zip
     - step:
         name: Deploy to AWS EBS
         caches:
@@ -16,7 +16,7 @@ pipelines:
             AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
             AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
             AWS_DEFAULT_REGION: 'eu-west-2'
-            APPLICATION_NAME: 'test-ebs-multi-docker'
-            ENVIRONMENT_NAME: 'TestEbsMultiDocker-env'
-            ZIP_FILE: 'docker-multicontainer-v2.zip'
+            APPLICATION_NAME: 'belfort-api'
+            ENVIRONMENT_NAME: 'production'
+            ZIP_FILE: 'docker-belfort-api.zip'
             WAIT: 'true'
