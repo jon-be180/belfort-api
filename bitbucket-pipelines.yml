@@ -1,20 +1,22 @@
-- step:
-    name: Build Belfort API
-    script:
-    - zip -r docker-multicontainer-v2.zip cron.yaml Dockerrun.aws.json .ebextensions php-app proxy
-    artifacts:
-    - docker-multicontainer-v2.zip
-- step:
-    name: Deploy to AWS EBS
-    caches:
-      - pip
-    script:
-    - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.6
-      variables:
-        AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
-        AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
-        AWS_DEFAULT_REGION: 'eu-west-2'
-        APPLICATION_NAME: 'test-ebs-multi-docker'
-        ENVIRONMENT_NAME: 'TestEbsMultiDocker-env'
-        ZIP_FILE: 'docker-multicontainer-v2.zip'
-        WAIT: 'true'
+pipelines:
+  default:
+    - step:
+        name: Build Belfort API
+        script:
+        - zip -r docker-multicontainer-v2.zip cron.yaml Dockerrun.aws.json .ebextensions php-app proxy
+        artifacts:
+        - docker-multicontainer-v2.zip
+    - step:
+        name: Deploy to AWS EBS
+        caches:
+          - pip
+        script:
+        - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.6
+          variables:
+            AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+            AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+            AWS_DEFAULT_REGION: 'eu-west-2'
+            APPLICATION_NAME: 'test-ebs-multi-docker'
+            ENVIRONMENT_NAME: 'TestEbsMultiDocker-env'
+            ZIP_FILE: 'docker-multicontainer-v2.zip'
+            WAIT: 'true'
