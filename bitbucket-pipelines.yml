@@ -19,6 +19,6 @@ pipelines:
             AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
             AWS_DEFAULT_REGION: 'eu-west-2'
             APPLICATION_NAME: 'belfort-api'
-            ENVIRONMENT_NAME: 'production'
+            ENVIRONMENT_NAME: 'BelfortApi-env'
             ZIP_FILE: 'docker-belfort-api.zip'
             WAIT: 'true'
