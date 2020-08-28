@@ -156,5 +156,5 @@ app.get('/trade/winratio', cors(corsOptions), (req, res, next) => {
 });
 
 
-const port = process.env.PORT || 3005;
+const port = process.env.PORT || 443;
 app.listen(port, () => console.log(`listening on port ${port}`));
