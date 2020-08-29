@@ -10,7 +10,7 @@ pipelines:
         - docker-belfort-api.zip
     - step:
         name: Deploy to AWS EBS
-        deployment: production-east
+        deployment: production
         script:
         - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.6
           variables:
