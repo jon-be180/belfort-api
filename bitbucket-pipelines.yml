@@ -5,7 +5,7 @@ pipelines:
     - step:
         name: Build Belfort API
         script:
-        - zip -r docker-belfort-api.zip package.json package-locj.json database.sqlite views server.js .npmrc
+        - zip -r docker-belfort-api.zip package.json package-lock.json database.sqlite views server.js .npmrc
         artifacts:
         - docker-belfort-api.zip
     - step:
