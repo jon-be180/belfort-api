@@ -19,5 +19,7 @@ pipelines:
             AWS_DEFAULT_REGION: 'eu-west-2'
             APPLICATION_NAME: 'belfort-api'
             ENVIRONMENT_NAME: 'BelfortApi-env'
+            CERTDOMAIN: 'api.be180.co.uk'
+            CERTEMAIL: 'jon.knight01@gmail.com'
             ZIP_FILE: 'docker-belfort-api.zip'
             WAIT: 'true'
