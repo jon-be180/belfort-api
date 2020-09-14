@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const swig = require('swig');
 const cors = require('cors');
+const Docker = require('dockerode');
 
 swig.setDefaults({ cache: false });
 
@@ -33,7 +34,7 @@ app.post('/', (req, res, next) => {
 // if your here to add json support, just dont bother, use queryString.stringify instead on the app
 // TODO check security implications here, apparently this can be bad
 var corsOptions = {
-  origin: 'http://192.168.1.179:3003',
+  origin: 'https://api.be180.co.uk:3003',
   optionsSuccessStatus: 200
 };
 
@@ -153,6 +154,25 @@ app.get('/trade/pnl', cors(corsOptions), (req, res, next) => {
 
 app.get('/trade/winratio', cors(corsOptions), (req, res, next) => {
   res.send(60);
+});
+
+
+app.get('/strategies', cors(corsOptions), (req, res, next) => {
+  //TODO security authentication file?
+  var docker = new Docker({host: 'http://gekim.be180.co.uk', port: 2375});
+
+  var results = [];
+
+  docker.listContainers(function (err, containers) {
+    containers.forEach(function(containerInfo) {
+      docker.getContainer(containerInfo.Id).inspect(function( err, data) {
+        // this is shit as it only shows one
+        results.push(data);
+        res.send(results);
+      });
+    })
+  });
+
 });
 
 
