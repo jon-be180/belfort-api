@@ -1,7 +1,7 @@
 service: sample-app
 provider:
   name: aws
-  runtime: nodejs10
+  runtime: nodejs10.x
   stage: dev
   region: eu-west-2
   memorySize: 128
