@@ -1,3 +1,4 @@
+const serverless = require('serverless-http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const swig = require('swig');
@@ -176,5 +177,6 @@ app.get('/strategies', cors(corsOptions), (req, res, next) => {
 });
 
 
-const port = process.env.PORT || 443;
-app.listen(port, () => console.log(`listening on port ${port}`));
+//const port = process.env.PORT || 443;
+//app.listen(port, () => console.log(`listening on port ${port}`));
+module.exports.handler = serverless(app);
