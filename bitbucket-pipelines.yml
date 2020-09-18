@@ -1,25 +1,12 @@
-image: atlassian/default-image:2
+image: node:8
 
 pipelines:
   default:
     - step:
-        name: Build Belfort API
-        script:
-        - zip -r docker-belfort-api.zip package.json package-lock.json database.sqlite views server.js .npmrc .ebextensions
-        artifacts:
-        - docker-belfort-api.zip
-    - step:
-        name: Deploy to AWS EBS
+        name: Deploy to Lambda
         deployment: production
         script:
-        - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.6
-          variables:
-            AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
-            AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
-            AWS_DEFAULT_REGION: 'eu-west-2'
-            APPLICATION_NAME: 'belfort-api'
-            ENVIRONMENT_NAME: 'BelfortApi-env'
-            CERTDOMAIN: 'api.be180.co.uk'
-            CERTEMAIL: 'jon.knight01@gmail.com'
-            ZIP_FILE: 'docker-belfort-api.zip'
-            WAIT: 'true'
+        - npm install -g serverless
+        - npm install
+        - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID ?secret $AWS_SECRET_ACCESS_KEY
+        - serverless deploy
