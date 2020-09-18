@@ -17,6 +17,7 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
     "sqlite3": "^5.0.0",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "serverless-http": "2.6.0"
   }
 }
