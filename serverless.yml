@@ -1,4 +1,4 @@
-service: sample-app
+service: belfort-api
 provider:
   name: aws
   runtime: nodejs10.x
@@ -7,7 +7,8 @@ provider:
   memorySize: 64
 functions:
   app:
-    handler: app/app.handler
+    handler: app.handler
+    description: the app
     events: 
       - http: 
           path: /
