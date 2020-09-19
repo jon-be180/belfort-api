@@ -5,6 +5,13 @@ provider:
   stage: dev
   region: eu-west-2
   memorySize: 128
+custom:
+  customDomain:
+    domainName: api.be180.co.uk
+    certificateName: be180.co.uk
+    basePath: ''
+    stage: ${self:provider.stage}
+    createRoute53Record: true
 functions:
   app:
     handler: server.handler
