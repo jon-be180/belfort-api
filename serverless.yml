@@ -5,6 +5,8 @@ provider:
   stage: dev
   region: eu-west-2
   memorySize: 128
+plugins:
+  - serverless-domain-manager
 custom:
   customDomain:
     domainName: api.be180.co.uk
