@@ -1,3 +1,4 @@
+frameworkVersion: '^2.1.1'
 service: belfort-api
 provider:
   name: aws
