@@ -10,5 +10,5 @@ pipelines:
         - npm install
         - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
         - export SLS_DEBUG=true
-        - serverless create_domain
+        - serverless create_domain --region $AWS_REGION
         - serverless deploy
