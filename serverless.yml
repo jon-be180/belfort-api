@@ -10,9 +10,9 @@ plugins:
   - serverless-domain-manager
 custom:
   customDomain:
+    domainName: "api.be180.co.uk"
     # crazy that the only way to change this is via their cli...
-    domainName: "-"
-    certificateName: be180.co.uk
+    certificateName: "-"
     basePath: ''
     stage: ${self:provider.stage}
     createRoute53Record: true
