@@ -11,8 +11,6 @@ plugins:
 custom:
   customDomain:
     domainName: "api.be180.co.uk"
-    # crazy that the only way to change this is via their cli...
-    certificateName: "-"
     basePath: ''
     stage: ${self:provider.stage}
     createRoute53Record: true
