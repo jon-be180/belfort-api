@@ -27,14 +27,28 @@ var corsOptions = {
   optionsSuccessStatus: 200
 };
 
-
+/*
+ * TODO exchange account api
+ * this must have a wallet address option for uk tax purposes
+ */
 
 /**
  * Lists all the trades by the authorised user 
+ * Note: moodified to support uk gov crypto reporting 
+ *       rules, share reporting not specifically added 
+ *       but might inherit the same requirements
  *
  * Request: {
  *   isActive: 1 or 0
  * }
+ *
+ * type of tokens YES
+ * date you disposed of them YES
+ * number of tokens you’ve disposed of YES
+ * number of tokens you have left (done with actions)
+ * value of the tokens in pound sterling YES
+ * bank statements and wallet addresses YES
+ * a record of the pooled costs before and after you disposed of them (TODO - https://www.gov.uk/tax-sell-shares/same-company)
  *
  * Response: {
  *   ID
