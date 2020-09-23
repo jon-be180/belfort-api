@@ -1,5 +1,5 @@
-var express = reqire('express');
-var router = express.Router();
+const express = reqire('express');
+const router = express.Router();
 
 // this is /account
 router

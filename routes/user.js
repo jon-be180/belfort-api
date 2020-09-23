@@ -1,8 +1,8 @@
-var express = reqire('express');
-var router = express.Router();
+const express = reqire('express');
+const router = express.Router();
 global.fetch = require('node-fetch');
-var AmazonCognitoIdentity = require('amazon-cognito-identity');
-var config = require('../config/cognito.js');
+const AmazonCognitoIdentity = require('amazon-cognito-identity');
+const config = require('../config/cognito.json');
 
 const poolData = {
     UserPoolId: config.cognito.userPoolId,
@@ -12,7 +12,7 @@ const userData = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 // this is /account
 router
-  .get('/', function(req, res) {
+  .post('/signup', function(req, res) {
     const email = req.body.email;
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
@@ -36,6 +36,32 @@ router
         res.send(data.user);
     });
 
-  });
+  })
+  .post('/login', (req, res) => {
+    const loginDetails = {
+        Username: req.body.email,
+        Password: req,body.password
+    }
+
+    const authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(loginDetails)
+
+    const userDetails = {
+        Username: req.body.email,
+        Pool: userPool
+    }
+
+    const cognitoUser = new AmazonCognitoIdentity.CognitoUser(userDetails)
+
+    cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: data => {
+            // todo
+          res.send({status: 'success'})
+        },
+        onFailure: err => {
+          req.send({status: 'error', reason: err.message})
+        }
+    })
+
+  })
 
   module.exports = router;
