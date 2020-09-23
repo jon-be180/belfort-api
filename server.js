@@ -27,6 +27,15 @@ var corsOptions = {
   optionsSuccessStatus: 200
 };
 
+// this appears to be the better way to structure everything
+
+var accountsRouter = require('./routes/accounts');
+app.use('/accounts', accountsRouter);
+
+
+
+
+
 /*
  * TODO exchange account api
  * this must have a wallet address option for uk tax purposes

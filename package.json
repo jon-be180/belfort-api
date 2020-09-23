@@ -11,14 +11,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "amazon-cognito-identity-js": "^4.4.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dockerode": "^3.2.1",
     "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
     "nodemon": "^2.0.4",
-    "sqlite3": "^5.0.0",
-    "swig": "^1.4.2",
+    "serverless-domain-manager": "4.2.3",
     "serverless-http": "2.6.0",
-    "serverless-domain-manager": "4.2.3"
+    "sqlite3": "^5.0.0",
+    "swig": "^1.4.2"
   }
 }
