@@ -5,7 +5,7 @@ const swig = require('swig');
 const cors = require('cors');
 const Docker = require('dockerode');
 const expressSession = require('express-session');
-const expressValidator = require('express-validator');
+const { body, validationResult} = require('express-validator');
 
 swig.setDefaults({ cache: false });
 
@@ -24,7 +24,6 @@ const app = express();
 // what is extended for??
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(expressValidator());
 app.use(expressSession(session));
 
 app.set('view engine', 'html');

@@ -1,12 +1,11 @@
-const express = reqire('express');
+const express = require('express');
 const router = express.Router();
 global.fetch = require('node-fetch');
-const AmazonCognitoIdentity = require('amazon-cognito-identity');
+const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 const config = require('../config/cognito.json');
 
 const speakeasy = require('speakeasy')
 const QR = require('qrcode')
-const util = require('./util')
 const name = 'Belfort'
 
 const poolData = {
@@ -70,7 +69,7 @@ router
   })
   .get('/mfa', (req, res) => {
     if(!req.session.sub) {
-        return res.send({status: 'err'r})
+        return res.send({status: 'error'})
     }
     //todo
   })
@@ -138,7 +137,7 @@ router
                 req.session['login-errors'].push(err.message)
                 return res.send({status: 'error'})
             }
-        }
+        })
       } else {
           req.send({status: 'error'})
       }

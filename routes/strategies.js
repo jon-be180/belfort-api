@@ -1,6 +1,8 @@
-const express = reqire('express')
+const express = require('express')
 const router = express.Router()
-const aws = require('aws-sdk')
+const AWS = require('aws-sdk')
+const cors = require ('cors')
+const corsOptions = {}
 
 AWS.config.update(require('../config/db.json'))
 
@@ -40,7 +42,7 @@ router.get('/', cors(corsOptions), (req, res, next) => {
   
   });
 
-  router.post('/', (req, res) {
+  router.post('/', (req, res) => {
     // create a strategy
   })
 

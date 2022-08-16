@@ -1,6 +1,6 @@
-const express = reqire('express')
+const express = require('express')
 const router = express.Router()
-const aws = require('aws-sdk')
+const AWS = require('aws-sdk')
 
 AWS.config.update(require('../config/db.json'))
 
